@@ -18,11 +18,11 @@ const Hero = () => {
   // isLoading: whether videos are loading
   // loadedVideos: number of loaded videos
   const [currentIndex, setCurrentIndex] = useState(1);
-  const [hasClicked, setHasClicked] = useState(false);
+  //const [hasClicked, setHasClicked] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [loadedVideos, setLoadedVideos] = useState(0);
   const totalVideos = 4; // total number of videos
-  const nextVideoRef = React.useRef(null); // ref for controlling the next video
+  //const nextVideoRef = React.useRef(null); // ref for controlling the next video
 
 
   // Helpers
@@ -40,7 +40,7 @@ const Hero = () => {
 
   // handleMiniVideoClick: activates the next video when the mini video is clicked
   const handleMiniVideoClick = () => {
-    setHasClicked(true);
+    //setHasClicked(true);
     setCurrentIndex(upcomingVideoIndex);
   };
 
@@ -55,7 +55,7 @@ const Hero = () => {
 
   // With GSAP, play the grow animation on video when clicked
   useGSAP(() => {
-    if (hasClicked) {
+    //if (hasClicked) {
       gsap.set('#next-video', { visibility: 'visible' });
       gsap.to('#next-video', {
         transformOrigin: 'center center',
@@ -64,18 +64,20 @@ const Hero = () => {
         height: '100%',
         duration: 1.5,
         ease: 'power.inOut',
-        onStart: () => {
-          nextVideoRef.current.play();
-        },
+        // onStart: () => {
+        //   nextVideoRef.current.play();
+        // },
       });
       gsap.from('#current-video', {
         transformOrigin: 'center center',
         scale: 0,
         duration: 1.5,
-        ease: 'power1.inOut',
+          ease: 'power1.inOut',
+
       });
     }
-  }, { dependencies: [currentIndex], revertOnUpdate: true });
+  //}
+      , { dependencies: [currentIndex], revertOnUpdate: true });
 
   // Animate clip-path and border radius on scroll with GSAP
   useGSAP(() => {
@@ -114,18 +116,18 @@ const Hero = () => {
       )}
       <div id="video-frame" className="relative z-10 h-dvh w-screen overflow-hidden rounded-lg bg-blue-75">
         <div>
-          <div className="mask-clip-path absolute-center z-50 size-64 cursor-pointer rounded-lg overflow-hidden">
+            <div className="mask-clip-path absolute-center z-50 size-64 cursor-pointer rounded-lg overflow-hidden">
             <div
               onClick={handleMiniVideoClick}
               className="origin-center scale-50 opacity-0 transition-all duration-500 ease-in-out hover:scale-100 hover:opacity-100"
             >
               <video
-                ref={nextVideoRef}
+                //ref={nextVideoRef}
                 src={getVideoSrc(upcomingVideoIndex)}
                 loop
                 muted
                 id="current-video"
-                className="size-64 origin-center scale-150 object-cover object-center"
+                className="size-64 origin-center object-cover object-center"
                 onLoadedData={handleVideoLoad}
               />
             </div>
@@ -138,7 +140,7 @@ const Hero = () => {
             id="next-video"
             className="absolute-center invisible absolute z-20 size-64 object-cover object-center"
             onLoadedData={handleVideoLoad}
-            ref={nextVideoRef}
+            //ref={nextVideoRef}
           />
           <video
             src={getVideoSrc(currentIndex === totalVideos - 1 ? 1 : currentIndex)}
