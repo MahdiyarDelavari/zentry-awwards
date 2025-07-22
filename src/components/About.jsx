@@ -2,6 +2,7 @@ import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 import React from 'react'
 import { ScrollTrigger } from 'gsap/all'
+import AnimatedTitle from './AnimatedTitle'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -11,7 +12,7 @@ const About = () => {
         const clipAnimation = gsap.timeline({
             scrollTrigger: {
                 trigger: '#clip',
-                start: 'center center',
+                start: 'top 10%',
                 end: '+=800 center',
                 scrub: 0.5,
                 pin: true,
@@ -20,18 +21,28 @@ const About = () => {
         })
 
         clipAnimation.to('.mask-clip-path', {
-            width: '100vw',
-            height: '100vh',
+            width: '99dvw',
+            height: '90dvh',
             borderRadius: '0',
         })
+        gsap.to('#root', {
+            backgroundColor: 'black',
+            scrollTrigger: {
+                trigger: '#about',
+                start: 'top top',
+                scrub:4
 
+            }
+        })
     },[])
   return (
       <div id="about" className='w-screen min-h-screen'>
           <div className="relative mb-8 mt-36 flex flex-col items-center gap-5">
               <h2 className='font-general text-sm uppercase md:text-[10px]'>Welcome To Zentry</h2>
 
-              <div className="mt-5 text-center text-4xl uppercase leading-[0.8] md:text-[6rem]">Disc<b>o</b>ver The World's<br /> L<b>a</b>rgest Shared Adventure</div>
+              <AnimatedTitle title={"Disc<b>o</b>ver The World's<br /> L<b>a</b>rgest Shared Adventure"} containerClass="mt-5 !text-black text-center"/>
+
+
               
               <div className="about-subtext">
                   <p>The Game Of Games Begins-Your Life, Now An Epic MMORPG</p>
