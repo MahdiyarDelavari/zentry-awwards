@@ -12,6 +12,7 @@ const Button = ({title , id , leftIcon , rightIcon , containerClass}) => {
               </div>
           </span>
 
+          {rightIcon}
       </button>
 )
 }

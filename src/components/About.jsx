@@ -12,7 +12,7 @@ const About = () => {
         const clipAnimation = gsap.timeline({
             scrollTrigger: {
                 trigger: '#clip',
-                start: 'top 10%',
+                start: 'top 5%',
                 end: '+=800 center',
                 scrub: 0.5,
                 pin: true,
@@ -21,7 +21,7 @@ const About = () => {
         })
 
         clipAnimation.to('.mask-clip-path', {
-            width: '99dvw',
+            width: '100dvw',
             height: '90dvh',
             borderRadius: '0',
         })
@@ -29,9 +29,9 @@ const About = () => {
             backgroundColor: 'black',
             scrollTrigger: {
                 trigger: '#about',
-                start: 'top top',
-                scrub:4
-
+                start: '8% top',
+                end: 'bottom bottom',
+                scrub: 0.5,
             }
         })
     },[])
@@ -50,7 +50,7 @@ const About = () => {
               </div>
           </div>
 
-          <div className="h-dvh w-screen" id='clip'>
+          <div className="h-dvh w-screen " id='clip'>
               <div className="mask-clip-path about-image">
                   <img src="/img/about.webp" alt="background" className='absolute left-0 top-0 size-full object-cover' />
               </div>

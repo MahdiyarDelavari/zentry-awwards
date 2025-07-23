@@ -11,6 +11,10 @@ body {
     font-family: "General Sans", sans-serif;
 }
 
+* {
+    scroll-behavior: smooth;
+}
+
 @layer base {
     @font-face {
         font-family: "circular-web";
@@ -48,7 +52,7 @@ body {
     }
 
     .floating-nav {
-        @apply bg-black rounded-lg border;
+        @apply bg-slate-900 rounded-lg border;
     }
 
     .absolute-center {
